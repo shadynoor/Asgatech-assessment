@@ -1,0 +1,9 @@
+<section class="products">
+  <h1 class="main-title">Products List</h1>
+
+  <div class="grid-container">
+    @if (products) { @for (product of products; track product.ProductId) {
+    <app-card [product]="product" />
+    } }
+  </div>
+</section>

@@ -1,27 +1,42 @@
 # Assessment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.0.
+1. ### Installation
 
-## Development server
+To try the app:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+    1.  install packages using `npm install`
+    2.  run `ng serve` and then navigate to `http://localhost:4200/`
 
-## Code scaffolding
+2.  ### Folder Structure
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    1. #### Core
 
-## Build
+       This Folder contains core services across the application and translations
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+       i. Mock API Service: Contains everything about api handling
 
-## Running unit tests
+       ii. Model: contains model.ts which has all interfaces
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    2. #### Pages
 
-## Running end-to-end tests
+       i. Order Details
+       ii. Orders Page
+       iii. Products Page
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    3. #### Layout
 
-## Further help
+       This folder contains navbars
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    4. #### Shared
+
+       This folder contains all shared components across the app.
+
+3.  ### Libraries
+
+    1. **PrimeNg**
+
+4.  ### Project Details
+
+    i. Built using Angular V.18.2.0
+    ii. Standalone based Application.
+    iii. SSR App fully compatible with server and compressed.

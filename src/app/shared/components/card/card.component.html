@@ -1,0 +1,30 @@
+<div class="card">
+  @if (product().AvailablePieces < 5) {
+  <div class="card--badge">
+    @if (product().AvailablePieces > 0) {
+    <p-tag
+      value="Only {{ product().AvailablePieces }} left in stock"
+      severity="warning"
+    />
+    }@else {
+
+    <p-tag value="Out of stock" severity="warning" />}
+  </div>
+  }
+
+  <div class="card__img">
+    <img
+      [src]="product().ProductImg"
+      [alt]="product().ProductName"
+      loading="lazy"
+    />
+  </div>
+  <div class="card__body">
+    <h3 class="title">{{ product().ProductName }}</h3>
+    <p class="price">${{ product().ProductPrice }}</p>
+  </div>
+
+  <div class="card__actions">
+    <p-button label="Check" icon="pi pi-check"></p-button>
+  </div>
+</div>

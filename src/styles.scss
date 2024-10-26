@@ -1,1 +1,105 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+// Reset Start
+html {
+  font-size: 10px;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+// Reset End
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+.main-title {
+  font-size: 3.6rem;
+  font-weight: bold;
+  margin: 3rem 0;
+  @media (max-width: 767px) {
+    font-size: 2.4rem;
+    margin: 2rem 0;
+  }
+}
+
+// Navbar
+
+.p-menuitem-text {
+  font-size: 18px;
+}
+
+// Navbar
+
+.p-tag-value {
+  font-size: 1.4rem;
+  padding: 0px 10px;
+}
+
+// Dialog
+
+.p-dialog-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.p-button-label {
+  font-size: 1.4rem;
+  @media (max-width: 767px) {
+    font-size: 1.2rem;
+  }
+}
+
+.input-number-style {
+  font-size: 1.4rem;
+  height: 3.5rem;
+}
+
+.p-invalid {
+  input {
+    border-color: red !important;
+  }
+}
+
+// Dialog

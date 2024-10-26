@@ -1,0 +1,127 @@
+<section class="order-details-container">
+  <section class="user-details">
+    <h1 class="main-title">User Details</h1>
+
+    <div class="user-info">
+      <p>
+        Name: <b>{{ userSignal().Name }}</b>
+      </p>
+      <p>
+        Email: <b>{{ userSignal().Email }}</b>
+      </p>
+      <p>
+        Phone: <b>{{ userSignal().Phone }}</b>
+      </p>
+      <p>
+        Address: <b> {{ userSignal().Address }}</b>
+      </p>
+    </div>
+  </section>
+
+  <hr class="mt-3" />
+
+  @if (productsSignal()) {
+  <section class="order-details">
+    <h1 class="main-title">Order Details</h1>
+
+    <div class="products-list">
+      @for (product of productsSignal(); track product.ProductId) {
+      <div class="product">
+        @if (product.AvailablePieces < 5) {
+        <div class="tag">
+          @if (product.AvailablePieces > 0) {
+          <p-tag
+            value="Only {{ product.AvailablePieces }} left in stock"
+            severity="warning"
+          />
+          }@else {
+          <p-tag value="Out of stock" severity="warning" />}
+        </div>
+        }
+
+        <div class="product__details">
+          <div class="img-container">
+            <img [src]="product.ProductImg" [alt]="product.ProductName" />
+          </div>
+          <div class="info">
+            <h3>{{ product.ProductName }}</h3>
+            <p>${{ product.ProductPrice }}</p>
+          </div>
+        </div>
+
+        <div class="product__actions">
+          <div class="quantity">
+            <p>Quantity: {{ product.qty }}</p>
+            <p>
+              Total: ${{ (product.ProductPrice * product.qty!).toFixed(1) }}
+            </p>
+          </div>
+          <p-button
+            (onClick)="showDialog(product)"
+            label="Change Quantity"
+            icon="pi pi-check"
+          ></p-button>
+        </div>
+      </div>
+      }
+    </div>
+
+    <h2>Total: ${{ totalSignal() }}</h2>
+  </section>
+  }
+
+  <p-dialog
+    header="Change Quantity"
+    [modal]="true"
+    [(visible)]="visible"
+    [style]="{ width: '50rem', height: '25rem' }"
+    [draggable]="false"
+  >
+    @if (dialogActionClicked) {
+    <div class="dialog__spinner">
+      <p-progressSpinner
+        styleClass="w-4rem h-4rem"
+        strokeWidth="8"
+        fill="var(--surface-ground)"
+        animationDuration=".5s"
+      />
+    </div>
+    }@else {
+    <div class="dialog__details">
+      <span>Max Quantity: {{ productSignal().AvailablePieces }}</span>
+
+      <p-inputNumber
+        inputId="minmax"
+        mode="decimal"
+        [useGrouping]="false"
+        [min]="1"
+        [max]="productSignal().AvailablePieces"
+        [styleClass]="
+          currentProductQty() > productSignal().AvailablePieces
+            ? 'p-invalid input-number-style'
+            : 'input-number-style'
+        "
+        [styleClass]=""
+        [(ngModel)]="currentProductQty"
+      />
+      <span
+        >Total Price: ${{
+          currentProductQty() * productSignal().ProductPrice
+        }}</span
+      >
+    </div>
+    <div class="dialog__actions">
+      <p-button
+        label="Save"
+        (onClick)="updateQuantity()"
+        [disabled]="currentProductQty() > productSignal().AvailablePieces"
+      />
+      <p-button
+        label="Cancel"
+        severity="secondary"
+        (onClick)="visible.set(false)"
+      />
+    </div>
+    }
+  </p-dialog>
+</section>
